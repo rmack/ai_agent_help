@@ -21,6 +21,10 @@
 
 - [System]
 
+## Decoupling Boundaries
+
+- [What should remain decoupled?]
+
 ## Risks / Tradeoffs
 
 - [Risk]

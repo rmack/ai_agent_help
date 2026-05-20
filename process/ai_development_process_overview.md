@@ -41,7 +41,9 @@ This phase is about shaping the solution, not generating files.
 
 ## 1.1 CONOPS / Concept of Operations
 
-Use AI to explore:
+Use AI to define the operating intent before discussing software structure.
+
+CONOPS answers how the system should work in the real world:
 
 - What problem are we solving?
 - Who uses the system?
@@ -49,6 +51,7 @@ Use AI to explore:
 - What are the operating assumptions?
 - What are the failure scenarios?
 - What does success look like?
+- What constraints or non-goals shape the design?
 
 Example prompt:
 
@@ -78,15 +81,20 @@ Do not propose code yet.
 
 ## 1.2 Conceptual Architecture
 
-Use AI to identify the major system concepts without worrying about specific classes, files, or technologies yet.
+Use AI to turn the CONOPS into major system concepts without choosing implementation details yet.
+
+Conceptual architecture answers what major capabilities, components, responsibilities, boundaries, and flows exist. It should avoid specific files, frameworks, cloud services, or deployment choices unless those are fixed constraints.
 
 Ask:
 
-- What are the major components?
-- What responsibilities exist?
+- What major capabilities are required?
+- What are the major conceptual components?
+- What responsibilities does each component own?
 - What data moves through the system?
 - What are the boundaries?
+- What external systems or actors interact with the system?
 - What should not be coupled?
+- What major risks or tradeoffs are already visible?
 
 Example prompt:
 
@@ -94,6 +102,7 @@ Example prompt:
 Based on the CONOPS, help me define a conceptual architecture.
 
 Focus on:
+- major capabilities
 - major components
 - responsibilities
 - data flow
@@ -110,14 +119,19 @@ Do not move into implementation details yet.
 
 Now move from concepts into software structure.
 
+Logical architecture answers how the conceptual design becomes software responsibilities and contracts. It defines the system's internal organization without yet deciding where the pieces run or which infrastructure hosts them.
+
 Ask:
 
-- What modules/services/classes/functions are likely needed?
+- What modules, services, jobs, classes, functions, or packages are likely needed?
+- What responsibility does each unit own?
 - What contracts exist between them?
 - What schemas or data structures are involved?
+- What state is owned, read, written, or transformed?
 - What validation rules are needed?
 - What should be deterministic?
 - What should fail loudly?
+- What test strategy is appropriate?
 
 Example prompt:
 
@@ -129,6 +143,7 @@ Include:
 - responsibilities per module
 - data contracts
 - interfaces
+- data ownership and state transitions
 - validation rules
 - error handling expectations
 - test strategy
@@ -140,27 +155,43 @@ Call out any ambiguity instead of resolving it silently.
 
 ## 1.4 Physical Architecture
 
-Only after the above should AI discuss actual files, folders, dependencies, commands, and implementation sequencing.
+Only after the above should AI map the logical architecture to the real execution environment.
+
+Physical architecture answers where and how the logical architecture actually runs. This includes the runtime topology, infrastructure, cloud or on-prem services, deployment units, databases, queues, streams, containers, networking, identity, secrets, observability, scaling, and operational controls that make the logical design executable.
+
+Repository files, folders, dependencies, commands, and implementation sequencing are still important, but they come after the runtime and deployment model are clear.
 
 Ask:
 
-- What files need to change?
-- What files should not change?
-- What existing patterns must be followed?
-- What tests must be added or updated?
-- What commands should validate the change?
+- Where will this run: local, on-prem, cloud, edge, or a hybrid environment?
+- What compute model is used: containers, VMs, serverless functions, managed jobs, Kubernetes, scheduled tasks, or another runtime?
+- What deployment units exist, and how are they built, configured, released, and rolled back?
+- What data stores are required: relational database, object storage, cache, search index, warehouse, or another service?
+- How does data move at runtime: APIs, events, queues, streams, files, ETL, pub/sub, or direct database access?
+- What networking, identity, access, secrets, and data-boundary controls are required?
+- What observability, logging, monitoring, alerting, backup, recovery, and scaling expectations apply?
+- What tools, services, dependencies, and environment configuration are required?
+- What repository files, folders, infrastructure definitions, or configuration files need to exist or change?
+- What files or areas should not change?
+- What commands, tests, smoke checks, deployment checks, or operational checks should validate the design?
 
 Example prompt:
 
 ```text
-Now map the logical architecture to the current repository.
+Now map the logical architecture to the physical architecture.
 
-Before proposing changes:
-- inspect the existing structure
-- identify relevant files
-- identify existing patterns
-- identify tests
-- explain the minimal change path
+Include:
+- target runtime environment
+- deployment units
+- compute, storage, messaging, and network choices
+- data movement at runtime
+- identity, secrets, access, and data-boundary controls
+- observability, scaling, backup, and recovery expectations
+- infrastructure, service, and tool dependencies
+- repository structure, configuration, and implementation boundaries
+- validation commands, deployment checks, and operational checks
+
+If there is an existing repository, inspect it before proposing file changes. Identify existing patterns and explain the minimal reviewable change path.
 
 Do not edit files until I approve the plan.
 ```

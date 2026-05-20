@@ -2,7 +2,9 @@
 
 ## Purpose
 
-Understand how the system should operate before discussing software structure.
+Define the operating intent before discussing software structure.
+
+CONOPS describes how the system should work in the real world: the problem, users, workflows, assumptions, success criteria, failure scenarios, and constraints that shape the design.
 
 ## Agent Behavior
 
@@ -17,6 +19,7 @@ Ask only the questions needed to build a useful CONOPS. If the user has already 
 5. What failure scenarios matter?
 6. What assumptions are we making?
 7. What constraints, non-goals, or boundaries exist?
+8. What decisions must be made before architecture design can proceed?
 
 ## Produce
 
@@ -29,6 +32,7 @@ Use `templates/conops.md` and produce:
 - success criteria
 - failure scenarios
 - constraints
+- non-goals / boundaries
 - open questions
 
 ## Stop / Continue

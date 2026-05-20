@@ -28,6 +28,10 @@
 
 - [Constraint]
 
+## Non-Goals / Boundaries
+
+- [Boundary]
+
 ## Open Questions
 
 - [Question]

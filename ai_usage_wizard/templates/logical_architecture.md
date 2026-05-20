@@ -13,9 +13,17 @@
 
 - [Model]
 
+## State Ownership / Transitions
+
+- [State owner or transition]
+
 ## Validation Rules
 
 - [Rule]
+
+## Deterministic Behavior
+
+- [Behavior that must be deterministic]
 
 ## Error Handling
 
