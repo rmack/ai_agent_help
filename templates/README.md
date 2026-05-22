@@ -55,6 +55,52 @@ CLAUDE.md  = adapter that imports the adjacent AGENTS.md
 
 This avoids maintaining separate Codex and Claude rule systems.
 
+## Codex Size And Loading Notes
+
+Codex builds an instruction chain when it starts. It reads global instructions
+from the Codex home directory, then walks from the project root down to the
+current working directory and includes matching `AGENTS.md` files along that
+path.
+
+Important size behavior:
+
+- Codex has a combined project-document size limit controlled by
+  `project_doc_max_bytes`.
+- The documented default is 32 KiB.
+- Once the combined instruction content reaches that limit, Codex stops adding
+  more instruction files.
+- If root `AGENTS.md` is too large, more specific local instructions may not be
+  loaded.
+- Remedies are to keep root concise, split scoped guidance into nested
+  `AGENTS.md` files, or intentionally raise `project_doc_max_bytes` in Codex
+  config.
+
+This is why the root template should stay compact and why detailed rules should
+move closer to the files they govern.
+
+## Claude Memory Notes
+
+Claude Code has two related mechanisms:
+
+- `CLAUDE.md` files: instructions written by humans for project, user, or
+  organization behavior.
+- Auto memory: notes Claude writes itself from corrections and preferences.
+
+For repository instructions, prefer checked-in `CLAUDE.md` adapter files that
+import `AGENTS.md`. Auto memory is useful for personal or learned preferences,
+but it is not a replacement for durable repository rules.
+
+Important Claude behavior:
+
+- Claude reads `CLAUDE.md`, not `AGENTS.md`, unless `CLAUDE.md` imports it.
+- `@path` imports are expanded into context; Markdown links are not imports.
+- Imported files still consume context.
+- Long instruction files consume more context and can reduce adherence.
+- Claude's docs recommend keeping `CLAUDE.md` files concise; if instructions
+  grow large, split or scope them.
+- `/memory` can be used to inspect or edit Claude memory/instruction files, but
+  behavior may vary by Claude Code version and UI mode.
+
 ## Scoped Context Strategy
 
 Keep the root `AGENTS.md` focused on rules that apply to most work:
@@ -126,6 +172,40 @@ Before editing an area below, read the matching reference first:
 
 Use this pattern when a rule is durable and reusable, but loading it for every
 task would make the root instruction file noisy.
+
+## Risks If You Do Not Follow This Pattern
+
+Common failure modes:
+
+- `CLAUDE.md` contains only a Markdown link to `AGENTS.md`, so Claude may not
+  import the actual instructions.
+- Codex and Claude drift because teams maintain separate rule files with
+  different content.
+- Root `AGENTS.md` grows too large, causing Codex to hit its instruction size
+  limit before local rules load.
+- All tasks load every detailed rule, which wastes context and makes agents
+  less likely to follow the rule that actually matters.
+- Local teams or subtrees lose important guidance because their rules are buried
+  in a large root document instead of placed near the relevant code.
+- Conflicting instructions across root and local files make behavior
+  unpredictable.
+- Durable decisions stay only in chat history or auto memory instead of the
+  repository, so future sessions and other tools do not reliably see them.
+
+The goal is not to create many files for their own sake. The goal is to keep
+root instructions small, shared instructions canonical, and detailed guidance
+loaded only where it is relevant.
+
+## Official Documentation
+
+Use official documentation for the latest behavior:
+
+- OpenAI Codex `AGENTS.md` guide:
+  <https://developers.openai.com/codex/guides/agents-md>
+- Claude Code memory and `CLAUDE.md` guide:
+  <https://code.claude.com/docs/en/memory>
+- Claude documentation index:
+  <https://code.claude.com/docs/llms.txt>
 
 ## How To Use
 

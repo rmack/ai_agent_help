@@ -9,14 +9,6 @@ documentation, review, and summarization. The developer remains responsible for
 requirements, architecture, correctness, validation, security, and final
 approval.
 
-`AGENTS.md` is the canonical shared instruction source. If this repository also
-uses Claude Code, keep `CLAUDE.md` as a small adapter that imports this file
-with `@AGENTS.md`.
-
-For larger repositories, place detailed area-specific rules in local
-`AGENTS.md` files near the code they govern. Local `CLAUDE.md` files should
-import only their adjacent local `AGENTS.md`.
-
 ## Operating Rules
 
 - Understand the request and relevant files before editing.
