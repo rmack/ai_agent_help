@@ -22,7 +22,7 @@ This version keeps the same core principles from v2:
 ## 0. Core Operating Principle
 
 The developer drives the work.
-AI assists, accelerates, challenges, summarizes, implements, and reviews — but it does not own the architecture, requirements, or final decisions.
+AI assists, accelerates, challenges, summarizes, implements, and reviews - but it does not own the architecture, requirements, or final decisions.
 
 The mindset should be:
 

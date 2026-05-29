@@ -38,9 +38,9 @@ You must:
 
 Classify each task as:
 
-- Lightweight — small, low-risk, localized work.
-- Standard — normal development work with moderate uncertainty.
-- Heavyweight — architecture, security, data, dependency, CI/CD, or broad impact work.
+- Lightweight - small, low-risk, localized work.
+- Standard - normal development work with moderate uncertainty.
+- Heavyweight - architecture, security, data, dependency, CI/CD, or broad impact work.
 
 Use `ai_usage_wizard/process_weights.md` for guidance.
 

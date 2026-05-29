@@ -59,9 +59,9 @@ Threads are temporary. Important knowledge should be captured in Markdown files,
 
 Validation should distinguish:
 
-- unit tests — isolated logic correctness
-- smoke tests — system/workflow runs
-- regression tests — unintended behavior changes
-- manual review — human understanding and acceptance
+- unit tests - isolated logic correctness
+- smoke tests - system/workflow runs
+- regression tests - unintended behavior changes
+- manual review - human understanding and acceptance
 
 Passing tests do not automatically prove correctness.

@@ -22,7 +22,7 @@ Choose the closest option:
 7. Review CI/CD, build, release, or deployment workflow
 8. Explore an idea / brainstorm
 9. Summarize this thread into a Markdown memory file
-10. I am not sure — help me choose
+10. I am not sure - help me choose
 
 Reply with a number or a short description.
 ```
