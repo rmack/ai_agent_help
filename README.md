@@ -2,11 +2,17 @@
 
 This repository contains a lightweight documentation kit for using AI coding agents in a disciplined software development workflow.
 
-The goal is to help developers get useful assistance from AI without losing control of requirements, architecture, implementation scope, validation, or final decisions.
+The goal is to help developers and organizations get useful assistance from AI without losing control of requirements, architecture, implementation scope, validation, policy, or final decisions.
 
 ## What This Repo Is
 
 This is not an application or library. It is a collection of Markdown process documents, agent instructions, workflow guides, and templates.
+
+The repository is organized around three related purposes:
+
+1. Development workflow and process
+2. Policy and organizational documentation
+3. `ai_usage_wizard`, a guided teaching and workflow aid for working with AI agents
 
 Use it to:
 
@@ -15,8 +21,49 @@ Use it to:
 - separate exploration from execution
 - keep implementation work scoped and reviewable
 - define validation expectations before making changes
+- explain policy, guidance, and engineering expectations for AI usage
 - capture durable context outside temporary chat threads
 - provide reusable `AGENTS.md` and `CLAUDE.md` templates for other repositories
+
+## Operating Model
+
+This repo is easiest to understand as three layers that support each other.
+
+### 1. Development Workflow and Process
+
+The process layer defines how developers should use AI during software work. It covers architecture-first thinking, exploration vs execution, workflow modes, validation gates, stop conditions, durable memory, and reviewable implementation handoffs.
+
+Primary locations:
+
+- [`process/`](process/)
+- [`process/ai_development_process_overview.md`](process/ai_development_process_overview.md)
+- [`process/ai_development_workflow.md`](process/ai_development_workflow.md)
+- [`templates/`](templates/)
+
+### 2. Policy and Organizational Documentation
+
+The policy layer describes how an organization can govern AI usage. It separates mandatory policy, practical guidance, engineering playbook material, and lightweight daily reference material.
+
+Primary locations:
+
+- [`docs/`](docs/)
+- [`docs/AI_Usage_Policy.md`](docs/AI_Usage_Policy.md)
+- [`docs/AI_Usage_Guidance.md`](docs/AI_Usage_Guidance.md)
+- [`docs/Engineering_Playbook_for_AI_Usage.md`](docs/Engineering_Playbook_for_AI_Usage.md)
+- [`docs/Engineering_Playbook_for_AI_Usage_Quick_Reference.md`](docs/Engineering_Playbook_for_AI_Usage_Quick_Reference.md)
+
+### 3. `ai_usage_wizard`
+
+The wizard layer is a portable, text-based aid that an AI agent can read and follow. It helps teach the workflow by routing a session, asking focused questions, identifying process weight, enforcing phase boundaries, and prompting for validation and closeout.
+
+Primary locations:
+
+- [`ai_usage_wizard/`](ai_usage_wizard/)
+- [`ai_usage_wizard/start_here.md`](ai_usage_wizard/start_here.md)
+- [`ai_usage_wizard/workflow_selector.md`](ai_usage_wizard/workflow_selector.md)
+- [`ai_usage_wizard/agent/`](ai_usage_wizard/agent/)
+- [`ai_usage_wizard/workflows/`](ai_usage_wizard/workflows/)
+- [`ai_usage_wizard/templates/`](ai_usage_wizard/templates/)
 
 ## Main Contents
 
@@ -31,10 +78,10 @@ Use it to:
 
 | Path | Purpose |
 | --- | --- |
-| [`ai_usage_wizard/`](ai_usage_wizard/) | Portable text-based wizard for routing AI-assisted development work into the right workflow. |
-| [`docs/`](docs/) | Organization-facing AI usage policy, guidance, playbook, and quick reference material. |
+| [`process/`](process/) | Development workflow and process model for disciplined AI-assisted engineering. |
+| [`docs/`](docs/) | Policy and organization-facing AI usage documentation. |
+| [`ai_usage_wizard/`](ai_usage_wizard/) | Portable text-based wizard for teaching and guiding AI-agent interaction during real work. |
 | [`presentation/`](presentation/) | Slide-deck and PDF presentation assets for explaining the workflow. |
-| [`process/`](process/) | Process-level documents that explain the AI-assisted development operating model. |
 | [`templates/`](templates/) | Reusable agent instruction templates for other repositories. |
 
 ## `process/`
