@@ -10,6 +10,8 @@ read ai_usage_wizard
 
 The agent should then guide the user through the correct workflow instead of expecting the user to remember the process.
 
+The wizard is an experimental learning aid and reference tool. It can help users reason through the process, but it is not a replacement for human understanding, judgment, or responsibility. Users should adapt the guidance to their own project, team, and environment.
+
 ## Two Audiences
 
 This package has two parts:
@@ -52,3 +54,5 @@ read ai_usage_wizard
 ```
 
 Then follow the wizard.
+
+The wizard can help you choose and follow a workflow, but you remain responsible for understanding the process and deciding what is appropriate for your situation.

@@ -84,6 +84,8 @@ read ai_usage_wizard
 
 The wizard helps route the session into the correct workflow instead of requiring the user to remember the process.
 
+The wizard is an experimental learning aid and reference tool. It is intended to help users understand and apply the process, not to replace human judgment or responsibility. Users should understand the workflow, adapt it to their project and environment, and make the final decisions about what is appropriate.
+
 Key files:
 
 - `ai_usage_wizard/README.md` - package overview
@@ -178,6 +180,8 @@ Read process/ai_development_workflow.md and help me create a handoff for an AI c
 The developer drives the work.
 
 AI assists with exploration, planning, implementation, review, validation, and summarization, but the human remains responsible for requirements, architecture, correctness, security, and final approval.
+
+The materials in this repository are intended to help people learn and practice a disciplined workflow. They are references, not a substitute for understanding the process or making context-specific decisions for a given team, project, or environment.
 
 ## License
 
