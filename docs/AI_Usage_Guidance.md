@@ -145,6 +145,7 @@ Validates correctness of isolated logic.
 - covers edge cases and failure conditions
 - ensures individual components behave as expected
 - typically fast and deterministic
+- tests themselves must be reviewed for meaningful assertions
 
 ### Smoke Testing
 
@@ -153,6 +154,7 @@ Validates that the system or pipeline runs successfully at a high level.
 - confirms no major failures or crashes
 - ensures core functionality is intact
 - verifies that key workflows execute successfully
+- confirms development-time fail-loud behavior where invalid states must stop execution clearly
 
 Smoke tests answer: “Does the system run?”
 
@@ -166,6 +168,11 @@ Validates that changes have not unintentionally altered expected behavior.
 
 Regression tests answer: “Did we change something we didn’t intend to?”
 
+Golden artifact regression checks are required when deterministic generated
+outputs, reports, snapshots, transformed data, or pipeline artifacts are part of
+the expected behavior. Golden artifact diffs must be reviewed. Regenerating
+artifacts is not itself evidence of correctness.
+
 ### Code Reviews
 
 Perform the required code reviews based on the changes made.
@@ -177,12 +184,26 @@ Perform the required code reviews based on the changes made.
 - Patterns followed
 - Etc
 
+For non-trivial AI-generated changes, use both human review and independent
+agent review.
+
+Human review must compare the diff against the original request, handoff,
+repository architecture, and acceptance criteria.
+
+Agent review should be asked to check whether the work follows repository logic,
+existing code patterns, project instructions, documented requirements, and
+validation expectations. Agent findings are inputs to review, not automatic
+truth. The developer should compare them against their own review, ask the
+original implementation agent to evaluate valid findings, apply fixes where
+needed, and review again.
+
 ### General Principles
 
 - passing tests do not guarantee correctness
 - tests validate behavior under specific conditions, not full system correctness
 - validate actual outputs, not just execution
 - use regression testing where output stability is required
+- correctness requires evidence from tests, artifact review, human judgment, and review feedback
 
 ## 9. Working Within Architecture and Standards
 

@@ -698,6 +698,8 @@ Check against patterns
 ↓
 Check tests
 ↓
+Check golden artifact diffs when deterministic outputs changed
+↓
 Check security/data handling
 ↓
 Identify required changes
@@ -713,6 +715,8 @@ Do not rewrite code unless asked.
 Explain why each concern matters.
 Check whether the implementation follows existing patterns.
 Check whether validation proves the right behavior.
+Check whether the tests themselves are strong enough to support correctness.
+Treat agent review findings as review inputs, not automatic truth.
 ```
 
 Example prompt:
@@ -724,7 +728,9 @@ Review this change for:
 - correctness
 - architecture alignment
 - repository pattern consistency
+- original handoff and instruction alignment
 - test coverage
+- validation gaps
 - security/data handling
 - maintainability
 - unnecessary complexity
@@ -1481,11 +1487,16 @@ Code review:
 - The developer reviewed the diff.
 - The developer understands the meaningful changes.
 - The change is small enough to review.
+- Independent agent review was used for non-trivial AI-generated changes, or the reason for skipping it is known.
+- Agent review findings were compared with the developer's own review.
 
 Validation:
 - Relevant unit tests were run.
+- Unit tests were reviewed for meaningful assertions and edge cases.
 - Smoke tests were run if workflow execution changed.
+- Smoke tests confirmed fail-loud behavior where hidden failure would mask correctness issues.
 - Regression tests were run if deterministic output changed.
+- Golden artifact diffs were reviewed when generated artifacts or stable outputs changed.
 - Manual validation was performed where needed.
 - The limits of validation are known.
 
@@ -1538,6 +1549,9 @@ They answer:
 Does this isolated logic behave correctly?
 ```
 
+Also review the tests themselves. A unit test that only executes code without
+checking meaningful behavior is weak evidence.
+
 ---
 
 ## 12.2 Smoke Tests
@@ -1549,6 +1563,10 @@ They answer:
 ```text
 Does the system still run?
 ```
+
+Smoke tests should support the development fail-loud philosophy. They should
+make broken assumptions, missing artifacts, invalid inputs, and failed execution
+blocks visible instead of letting the workflow appear successful.
 
 ---
 
@@ -1562,6 +1580,10 @@ They answer:
 Did we accidentally change something?
 ```
 
+When deterministic generated outputs are part of the contract, compare them
+against golden artifacts. Review the artifact diff and confirm changed outputs
+match the intended behavior before accepting regenerated artifacts.
+
 ---
 
 ## 12.4 AI Validation Prompt
@@ -1573,7 +1595,9 @@ Classify validation into:
 - unit tests
 - smoke tests
 - regression tests
+- golden artifact checks
 - manual review
+- agent review
 
 For each one, explain:
 - what command was run

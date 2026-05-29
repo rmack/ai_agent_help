@@ -22,12 +22,18 @@ A task is done only when the developer can understand, review, validate, and pre
 - The developer reviewed the meaningful changes.
 - The diff is small enough to review.
 - Risks and tradeoffs are understood.
+- At least one agent review was used for non-trivial AI-generated changes, or
+  the reason for skipping it is understood.
+- Agent review findings were compared against the developer's review before acceptance.
 
 ### Validation
 
 - Relevant unit tests were run.
+- The unit tests were reviewed for meaningful assertions, edge cases, and failure behavior.
 - Smoke tests were run if workflow execution changed.
+- Smoke tests confirmed development-time fail-loud behavior where invalid states must not be hidden.
 - Regression tests were run if deterministic behavior or outputs changed.
+- Golden artifact diffs were reviewed when generated artifacts or stable outputs changed.
 - Manual validation was performed where needed.
 - Validation limits are known.
 

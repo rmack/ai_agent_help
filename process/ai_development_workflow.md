@@ -19,7 +19,8 @@ Codex/Claude/Agent executes small step
    ↓
 Human reviews diff
    ↓
-Run unit / smoke / regression tests / code reviews
+Build correctness evidence:
+unit tests / smoke tests / golden regression checks / human review / agent review
    ↓
 Commit locally
    ↓
@@ -109,6 +110,7 @@ Expected behavior
 Files or areas likely involved
 Implementation guidance
 Validation expectations
+Correctness evidence required
 Stop conditions
 Definition of done
 ```
@@ -196,19 +198,41 @@ The human still owns the code.
 
 ## 9. Validate the Work
 
-Run the right level of testing.
+Run the right level of testing and review. AI-generated work is not complete
+because it looks plausible, because execution finished, or because a single test
+suite passed. It is complete only when there is enough evidence for the
+developer to believe the requested behavior is correct.
 
 Use:
 
 ```text
 Unit tests
-Validate isolated logic.
+Validate isolated logic. Review the tests themselves to confirm they check the
+intended behavior, edge cases, and failure conditions instead of only exercising
+code paths.
 
 Smoke tests
-Validate that the workflow/system still runs.
+Validate that the workflow/system still runs. During development, smoke checks
+should support a fail-loud philosophy: execution blocks should stop clearly on
+invalid inputs, missing artifacts, broken assumptions, or unexpected states.
 
 Regression tests
 Validate that existing expected behavior did not unintentionally change.
+
+Golden artifact regression checks
+Compare deterministic outputs against known-good artifacts when the task touches
+pipelines, generated files, transformations, reports, or other stable outputs.
+Review diffs in golden artifacts; do not accept changed artifacts just because
+they were regenerated.
+
+Human code review
+Inspect the diff, compare it to the handoff, verify repository patterns, and
+decide whether the change actually satisfies the requested behavior.
+
+Agent code review
+Use one or more secondary AI reviews as an additional check. Ask the reviewing
+agent to focus on correctness, repo logic, existing patterns, original
+instructions, document requirements, tests, and validation gaps.
 
 Code Reviews
 Perform 1..n code reviews depending on the work completed.
@@ -219,7 +243,40 @@ Also ask:
 ```text
 What did the tests prove?
 What did they not prove?
+Are the tests themselves strong enough to demonstrate correctness?
+Did smoke tests only prove execution, or did they also verify meaningful outputs?
+Did golden artifact diffs match the intended behavior?
 What still needs manual review?
+Did a human review the change against the original request and handoff?
+Did an independent agent review find issues the original implementation missed?
+```
+
+If an agent reviewer reports findings, do not treat them as automatically true.
+Compare them with the human review. Ask the original implementation agent to
+evaluate the findings against the code and task context. Valid findings should
+be fixed, then the work should be reviewed again.
+
+Example agent review prompt:
+
+```text
+Review this change for correctness.
+
+Check whether it follows:
+- the original handoff
+- repository architecture and code patterns
+- AGENTS.md / CLAUDE.md / project instructions
+- documented requirements and constraints
+- testing and validation expectations
+
+Report:
+- blocking issues
+- likely bugs
+- pattern or architecture violations
+- missing or weak tests
+- validation gaps
+- questions that must be answered before accepting the work
+
+Do not summarize the implementation unless needed to explain a finding.
 ```
 
 ---

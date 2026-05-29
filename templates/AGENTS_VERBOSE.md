@@ -207,6 +207,7 @@ Use the right level of validation for the risk:
 - Integration tests for cross-module behavior.
 - Smoke tests for major workflows.
 - Regression tests for behavior that must remain stable.
+- Golden artifact comparison for deterministic generated outputs.
 - Manual review when tests cannot prove correctness.
 
 When reporting validation, explain:
@@ -216,6 +217,10 @@ When reporting validation, explain:
 - what the validation proves
 - what it does not prove
 - what remains untested
+
+Review tests and artifact diffs for correctness. Do not treat successful
+execution, regenerated outputs, or passing tests as sufficient evidence by
+themselves.
 
 ## Security and Data Handling
 

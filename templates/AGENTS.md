@@ -80,10 +80,13 @@ Use the right level of validation for the risk:
 - integration tests for cross-module behavior
 - smoke tests for major workflows or stage execution
 - regression tests for output stability
+- golden artifact comparison for deterministic generated outputs
 - manual review when tests cannot prove correctness
 
 When reporting validation, explain what was run, what passed or failed, what
 the validation proves, what it does not prove, and what remains untested.
+Review tests and artifact diffs for correctness; do not treat successful
+execution or regenerated outputs as sufficient evidence by themselves.
 
 Fill in common commands:
 

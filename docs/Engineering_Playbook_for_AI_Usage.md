@@ -62,11 +62,13 @@ All changes must be validated through:
 
 - Code review, including diff inspection.
 - Execution of relevant commands and tests.
+- Review of generated or deterministic artifacts when outputs are expected to remain stable.
 
 Developers must:
 
 - Understand what tests validate.
 - Not rely solely on passing results.
+- Confirm that validation evidence is strong enough for the specific task.
 
 ## Testing Philosophy
 
@@ -76,22 +78,42 @@ Two levels of testing are required:
 
 - Validates correctness of isolated logic.
 - Covers edge cases and failure conditions.
+- Requires reviewing the tests for meaningful assertions.
 
 ### Smoke Testing
 
 - Validates system-level or stage-level behavior.
 - Confirms pipeline and integration integrity.
+- Confirms fail-loud behavior for development-time execution blocks where
+  hidden failure would mask correctness issues.
+
+### Regression and Golden Artifact Testing
+
+- Validates that expected behavior did not change unintentionally.
+- Compares deterministic outputs against known-good golden artifacts when stable
+  outputs are part of the contract.
+- Requires reviewing artifact diffs before accepting regenerated artifacts.
 
 ### General Principles
 
 - Do not create unnecessary tests.
 - Prefer extending existing test coverage.
 - Validate outputs, not just execution.
+- Passing tests are evidence, not proof of full correctness.
 
-### Future Direction
+## Review Loop
 
-- Golden artifact comparison.
-- Regression validation.
+AI-generated work should be reviewed through a deliberate loop:
+
+1. The engineer reviews the diff against the original request, handoff,
+   architecture, and acceptance criteria.
+2. A secondary agent review is used for non-trivial or risky AI-generated
+   changes.
+3. Agent findings are compared with the engineer's own findings.
+4. Valid findings are sent back to the implementation agent for evaluation and
+   fixes.
+5. The engineer reviews the fixes and may request another independent agent
+   review before acceptance.
 
 ## Change Control
 

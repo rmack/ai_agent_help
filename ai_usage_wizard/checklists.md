@@ -55,7 +55,25 @@
 - Identify review focus.
 - Separate blocking, should-fix, and optional findings.
 - Identify validation gaps.
+- Check whether the implementation follows the original handoff, repo logic,
+  code patterns, and project instructions.
+- Compare agent review findings with the developer's own review.
+- Send valid findings back to the implementation agent for evaluation and fixes.
+- Re-review after fixes, using a secondary agent review for non-trivial or high-risk changes.
 - Recommend next actions.
+
+## Correctness Evidence
+
+- Review unit tests for meaningful assertions and edge cases.
+- Run relevant unit tests.
+- Run smoke tests for changed workflows or execution blocks.
+- Confirm smoke tests fail loudly when development-time assumptions are broken.
+- Run regression checks when behavior stability matters.
+- Compare golden artifacts when deterministic outputs or generated files change.
+- Review golden artifact diffs before accepting regenerated outputs.
+- Complete human code review.
+- Complete agent code review for non-trivial AI-generated changes.
+- Record what validation proved and what it did not prove.
 
 ## Thread Summary
 
