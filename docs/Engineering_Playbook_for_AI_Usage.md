@@ -236,11 +236,19 @@ AI-generated work should be reviewed through a deliberate loop:
    architecture, and acceptance criteria.
 2. A secondary agent review is used for non-trivial or risky AI-generated
    changes.
-3. Agent findings are compared with the engineer's own findings.
-4. Valid findings are sent back to the implementation agent for evaluation and
+3. The review agent is asked to compare the diff against the request, handoff,
+   repository architecture, existing patterns, tests, edge cases, validation
+   expectations, and possible unintended behavior changes.
+4. Agent findings are treated as review inputs, not automatic truth.
+5. Agent findings are compared with the engineer's own findings.
+6. Valid findings are sent back to the implementation agent for evaluation and
    fixes.
-5. The engineer reviews the fixes and may request another independent agent
+7. The engineer reviews the fixes and may request another independent agent
    review before acceptance.
+
+Avoid vague review prompts such as "is this good?" Ask the review agent to find
+specific correctness, behavior, architecture, security, test, contract,
+performance, maintainability, and scope-control issues.
 
 ## Change Control
 
