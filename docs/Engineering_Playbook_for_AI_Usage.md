@@ -323,6 +323,34 @@ AI-generated output does not reduce accountability.
 - Capture useful thread context in Markdown summaries when discussions create reusable decisions, patterns, open questions, or future work.
 - Promote durable repository-specific AI rules and patterns into `AGENTS.md` when future agents should follow them.
 
+## Context Management
+
+AI working context is temporary, incomplete, and may become stale during long
+threads, resumed sessions, model handoffs, or compressed conversation history.
+Engineers should manage context deliberately instead of assuming the agent
+remembers the correct state.
+
+For long-running or multi-step work:
+
+- Keep one thread focused on one task, feature, defect, review, or handoff.
+- Ask the agent to summarize current goal, scope, decisions, open questions,
+  files touched, validation performed, and remaining work before continuing.
+- Reconfirm assumptions after interruptions, resumes, or major direction
+  changes.
+- Restart with a tighter prompt when the thread becomes unfocused, repetitive,
+  or inconsistent.
+
+For durable knowledge:
+
+- Store accepted decisions, architecture notes, and reusable patterns in
+  repository documentation.
+- Store future agent instructions in `AGENTS.md` or the appropriate
+  tool-specific instruction file.
+- Store handoff summaries in Markdown when another engineer, reviewer, or agent
+  needs to continue the work.
+- Do not treat chat history, model memory, or prior agent claims as a source of
+  truth unless they are verified against the repository.
+
 ## Common Failure Modes
 
 - Overly large or unfocused tasks.
