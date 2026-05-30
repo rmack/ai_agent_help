@@ -86,7 +86,23 @@ A plan must be created before modifying:
 
 Engineers should deliberately pause at important decision points instead of letting AI carry work smoothly from idea to implementation.
 
-Required gates include:
+Gate depth should match task risk. Trivial edits may only require scope, diff,
+and validation review. Higher-risk work requires stronger gates before AI moves
+from exploration into execution.
+
+Common risk tiers:
+
+- Trivial: documentation copy edits, comments, formatting within an approved
+  scope, or other changes with no intended behavior impact.
+- Normal: localized implementation changes with clear requirements, existing
+  patterns, and limited downstream impact.
+- High-risk: schema, contract, architecture, security, deployment, dependency,
+  data-handling, pipeline, performance-critical, or cross-module changes.
+- Regulated or sensitive: work involving customer data, confidential data,
+  regulated data, credentials, production access, compliance controls, or
+  externally visible commitments.
+
+Required gates for normal, high-risk, regulated, or sensitive work include:
 
 - Problem understanding before architecture or design.
 - Architecture approval before code.
@@ -95,6 +111,10 @@ Required gates include:
 - Diff review after changes.
 - Validation review after tests or checks.
 - Documentation capture before closing the thread, PR, or handoff.
+
+For trivial work, engineers may use a lighter gate set, but still remain
+responsible for reviewing the diff, validating the result, and ensuring the
+change stays within scope.
 
 ## Validation Requirements
 
