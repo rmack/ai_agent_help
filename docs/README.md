@@ -4,6 +4,14 @@ This directory contains organization-facing documentation for adopting and gover
 
 The current documents focus on responsible AI usage, developer operating practices, and practical controls for keeping AI-assisted engineering work understandable, reviewable, secure, and aligned with organizational expectations.
 
+## Recommended Reading
+
+Different readers should start in different places:
+
+- Developers should start with `Engineering_Playbook_for_AI_Usage.md`, then use `Engineering_Playbook_for_AI_Usage_Quick_Reference.md` for day-to-day reminders.
+- Engineering leads or reviewers should read the playbook, then `AI_Usage_Guidance.md` to understand how the policy should be applied in practice.
+- Policy, security, compliance, or governance readers should start with `AI_Usage_Policy.md`, then read `AI_Usage_Guidance.md`.
+
 ## Organizational AI Adoption Overview
 
 When introducing AI into an organization, the documentation should be part of a broader operating model. The table below outlines the core components to consider.
