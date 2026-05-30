@@ -62,6 +62,32 @@ Exploration mode is for unclear requirements, architecture, tradeoffs, options, 
 
 Execution mode is for scoped implementation. Before execution, the goal, scope, constraints, acceptance criteria, validation expectations, and stop conditions must be clear enough to support reviewable changes.
 
+Use the handoff structure from `process/ai_development_workflow.md` for scoped
+execution:
+
+```text
+Purpose:
+Context:
+Goal:
+Scope:
+Constraints:
+Relevant architecture:
+Expected behavior:
+Files or areas likely involved:
+Implementation guidance:
+Validation expectations:
+Correctness evidence required:
+Stop conditions:
+Definition of done:
+```
+
+Expected behavior, validation expectations, correctness evidence required, stop
+conditions, and definition of done should describe the intended behavior,
+preserved behavior, observable outputs, required tests or checks, evidence that
+would increase confidence, and any conditions that would make the change
+unacceptable. The AI should not proceed to implementation when these inputs are
+missing or ambiguous for the risk level of the task.
+
 ## Plan-First Requirements
 
 A plan must be created before modifying:
