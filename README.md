@@ -25,6 +25,26 @@ Use it to:
 - capture durable context outside temporary chat threads
 - provide reusable `AGENTS.md` and `CLAUDE.md` templates for other repositories
 
+## Start Here: Developer Reading Order
+
+Developers should start with these three documents:
+
+1. [Engineering Playbook for AI Usage](docs/Engineering_Playbook_for_AI_Usage.md)
+
+   A concise day-to-day operating standard for using AI during software development.
+
+2. [AI-Assisted Development Process Overview](process/ai_development_process_overview.md)
+
+   The full process model behind the playbook, including workflow modes, architecture-first planning, gates, validation, stop conditions, and durable memory.
+
+3. [AI Development Workflow](process/ai_development_workflow.md)
+
+   A practical workflow for moving from discussion to scoped implementation, review, validation, and handoff.
+
+  
+   After those, use [`ai_usage_wizard/`](ai_usage_wizard/) when you want an AI agent to guide the process interactively.
+
+
 ## Operating Model
 
 This repo is easiest to understand as three layers that support each other.

@@ -1,13 +1,11 @@
-# AI-Assisted Development Process Flow v3
+# AI-Assisted Development Process Flow
 
-## Version Notes
+## Purpose  
 
-This version extends v2 by adding two practical operating sections:
-
-- intent-based AI workflow modes
-- tangent capture and Markdown memory files
 
 The goal is to move the process from a general AI-assisted development overview into a more usable operating model. Different kinds of work require different AI workflows. Starting a new project, enhancing an existing project, fixing a bug, reviewing architecture, and capturing broad ideation should not all use the same process.
+
+This process is tool-agnostic. It can be applied with different AI coding agents, chat tools, IDE integrations, or local automation tools. Tool-specific commands and capabilities may vary, but the operating discipline remains the same.
 
 This version keeps the same core principles from v2:
 
@@ -1167,6 +1165,29 @@ Task:
 [describe task]
 ```
 
+Before executing commands or editing files, confirm the working environment is usable:
+
+- the agent can read the relevant repository files
+- the agent can write only where changes are intended
+- required commands can run in the current environment
+- the current branch, workspace, or sandbox constraints are understood
+- unexpected environment behavior will stop the task instead of being worked around silently
+
+Environment readiness prompt:
+
+```text
+Before making changes, confirm the working environment.
+
+Check:
+- repository location and branch
+- read access to relevant files
+- write access to intended files only
+- available test/build commands
+- sandbox, permission, or dependency limitations
+
+If the environment is not ready, stop and explain what is blocking execution.
+```
+
 ---
 
 ## 7.2 Thread Execution Loop
@@ -1289,6 +1310,20 @@ This is where the developer stays in control.
 AI-assisted development should not bypass security, privacy, licensing, or operational risk review.
 
 Not every small change needs a heavyweight review. However, the process should always ask whether the change introduces risk. If the answer is yes, the risk needs to be reviewed before implementation continues.
+
+AI usage also has cost and capacity implications. The process should stay intentional: use the smallest effective scope, avoid unnecessary broad context loading, and choose the right level of model/tool effort for the task. Cost awareness should not override correctness or security, but wasteful AI usage is still an operational concern.
+
+Cost awareness prompt:
+
+```text
+Before continuing, check whether this AI interaction is appropriately scoped.
+
+Tell me:
+- whether the task is lightweight, standard, or heavyweight
+- whether the current context is broader than needed
+- whether a smaller prompt, narrower file set, or shorter follow-up would work
+- whether the selected tool/model effort is appropriate for the risk
+```
 
 ## 9.1 Security Review Gate
 

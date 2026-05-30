@@ -6,6 +6,8 @@ This playbook defines how engineers use AI tools to support software development
 
 This playbook is tool-agnostic and applies to any AI-assisted development tool. Tool-specific workflows may vary, but the principles and expectations remain consistent.
 
+This playbook is the concise engineer-facing operating standard. For the fuller process model, workflow prompts, phase guidance, and examples, see `process/ai_development_process_overview.md`.
+
 ## Core Principles
 
 - Engineers remain responsible for all outputs generated with AI tools.
@@ -18,14 +20,14 @@ This playbook is tool-agnostic and applies to any AI-assisted development tool. 
 ### Role Definition
 
 - Engineer = architect, reviewer, and decision-maker.
-- AI = assistant for implementation and exploration.
+- AI       = assistant for implementation and exploration.
 
 ### Source of Truth
 
-- Repository = system of record.
-- `AGENTS.md` = rules and constraints.
+- Repository    = system of record.
+- `AGENTS.md`   = rules and constraints. (Or agent specific files like CLAUDE.md)
 - Documentation = architecture and decisions.
-- AI threads = temporary working context.
+- AI threads    = temporary working context.
 
 ## Workflow
 
@@ -35,6 +37,30 @@ This playbook is tool-agnostic and applies to any AI-assisted development tool. 
 4. Review all diffs carefully.
 5. Run validation, including tests and commands.
 6. Accept or iterate.
+
+## Workflow Modes
+
+Engineers should choose the AI workflow based on the intent of the task. Do not use the same interaction pattern for every kind of work.
+
+Common modes include:
+
+- New project or major architecture design.
+- Enhancement of an existing project.
+- Bug fix or defect investigation.
+- Technical debt or refactor with no intended behavior change.
+- Architecture review.
+- Code review.
+- CI/CD, build, release, or deployment review.
+- Ideation, brainstorming, or option comparison.
+- Thread summary or durable memory capture.
+
+Each mode has different expectations for planning, validation, review, and stop conditions.
+
+## Exploration vs Execution
+
+Exploration mode is for unclear requirements, architecture, tradeoffs, options, or risks. In exploration mode, AI should help reason, compare, question, and summarize. It should not make implementation changes unless the engineer explicitly moves the task into execution.
+
+Execution mode is for scoped implementation. Before execution, the goal, scope, constraints, acceptance criteria, validation expectations, and stop conditions must be clear enough to support reviewable changes.
 
 ## Plan-First Requirements
 
@@ -55,6 +81,20 @@ A plan must be created before modifying:
   - Implementation.
   - Cleanup.
   - Testing.
+
+## Human Gates
+
+Engineers should deliberately pause at important decision points instead of letting AI carry work smoothly from idea to implementation.
+
+Required gates include:
+
+- Problem understanding before architecture or design.
+- Architecture approval before code.
+- Pattern approval before introducing or extending implementation patterns.
+- Scope approval before file edits.
+- Diff review after changes.
+- Validation review after tests or checks.
+- Documentation capture before closing the thread, PR, or handoff.
 
 ## Validation Requirements
 
@@ -126,6 +166,22 @@ AI-generated work should be reviewed through a deliberate loop:
   - Schema drift.
   - Unnecessary formatting changes.
 
+## Stop Conditions
+
+AI-assisted work must stop and return to engineer decision-making when:
+
+- Requirements are unclear.
+- Scope expands beyond the approved task.
+- Architecture impact is larger than expected.
+- A new dependency appears necessary.
+- Security, permissions, deployment, or data handling risk appears.
+- Tests fail for unclear reasons.
+- Validation results are ambiguous.
+- Existing patterns are inconsistent or poor.
+- The AI is guessing.
+
+When a stop condition occurs, summarize what changed, what triggered the stop, what decision is needed, and the available options before continuing.
+
 ## Environment Validation
 
 Before executing work:
@@ -165,6 +221,8 @@ AI-generated output does not reduce accountability.
   - Documentation.
   - Architecture records.
   - Decision logs.
+- Capture useful thread context in Markdown summaries when discussions create reusable decisions, patterns, open questions, or future work.
+- Promote durable repository-specific AI rules and patterns into `AGENTS.md` when future agents should follow them.
 
 ## Common Failure Modes
 
