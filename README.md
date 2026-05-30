@@ -195,8 +195,7 @@ Current documents include:
 - engineering playbook for AI usage
 - lightweight engineering quick reference
 
-The Markdown files are the editable source documents. The `.docx` files are document exports for sharing or review.
-Word exports are stored under `docs/docx/`.
+The Markdown files are the maintained source documents.
 
 ## `presentation/`
 
