@@ -84,6 +84,12 @@ Stop conditions:
 Definition of done:
 ```
 
+A handoff may also be structured as a WBS / work breakdown structure when a
+larger goal needs numbered implementation tasking, dependency sequencing, or
+future work slices. For non-trivial WBS handoffs, use a separate review thread
+when useful to verify the handoff against the current repository and as-built
+implementation before giving it to the implementation agent.
+
 Expected behavior, validation expectations, correctness evidence required, stop
 conditions, and definition of done should describe the intended behavior,
 preserved behavior, observable outputs, required tests or checks, evidence that

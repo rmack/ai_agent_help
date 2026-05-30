@@ -11,6 +11,8 @@ Clarify the work
    ↓
 Create Markdown handoff for Codex/Claude/Agent
    ↓
+Optionally verify handoff against current repo / as-built implementation
+   ↓
 Codex/Claude/Agent reads and explains understanding
    ↓
 Human confirms or corrects
@@ -115,6 +117,20 @@ Stop conditions
 Definition of done
 ```
 
+For implementation planning, this handoff may be a WBS / work breakdown
+structure document. In that form, it should break a larger goal into scoped
+implementation tasking such as:
+
+```text
+WBS 3
+WBS 3.1
+WBS 3.2
+WBS 3.3
+```
+
+The WBS should make task order, dependencies, current scope, future scope,
+validation expectations, stop conditions, and definition of done explicit.
+
 Simple wording:
 
 ```text
@@ -124,7 +140,47 @@ It should contain enough context for Codex/Claude/Agent to discuss and then exec
 
 ---
 
-## 5. Give the Markdown File to Codex/Claude/Agent
+## 5. Verify the WBS / Handoff Against the Current Implementation
+
+Before treating a WBS / handoff as official execution input, consider starting
+another agent thread to verify it against the current repository and as-built
+implementation.
+
+This step is especially useful when the handoff:
+
+```text
+spans multiple files or modules
+depends on prior WBS items
+describes architecture or contracts
+depends on existing plugin, pipeline, or framework behavior
+will guide a non-trivial implementation thread
+```
+
+Example prompt:
+
+```text
+Review this WBS / handoff document against the current repository.
+
+Do not implement anything.
+
+Check whether the handoff accurately reflects:
+- the as-built implementation
+- current file names and module boundaries
+- existing architecture and patterns
+- completed prerequisite work
+- likely affected files
+- validation commands and expected artifacts
+- risks, missing assumptions, or stale claims
+
+Report corrections needed before this handoff is used for implementation.
+```
+
+Discuss the findings, update the WBS / handoff if needed, and only then use it
+as official implementation input.
+
+---
+
+## 6. Give the Markdown File to Codex/Claude/Agent
 
 Start a Codex/Claude/Agent/agent thread and provide the Markdown artifact.
 
@@ -142,7 +198,7 @@ This makes Codex/Claude/Agent prove it understands before it changes code.
 
 ---
 
-## 6. Confirm or Correct Codex/Claude/Agent’s Understanding
+## 7. Confirm or Correct Codex/Claude/Agent’s Understanding
 
 Review what Codex/Claude/Agent says.
 
@@ -160,7 +216,7 @@ If not, correct it before execution.
 
 ---
 
-## 7. Ask Codex/Claude/Agent to Execute in Small Steps
+## 8. Ask Codex/Claude/Agent to Execute in Small Steps
 
 Once the plan is correct, tell Codex/Claude/Agent to begin.
 
@@ -178,7 +234,7 @@ This keeps the work reviewable.
 
 ---
 
-## 8. Review the Work
+## 9. Review the Work
 
 After Codex/Claude/Agent makes changes, review the diff.
 
@@ -196,7 +252,7 @@ The human still owns the code.
 
 ---
 
-## 9. Validate the Work
+## 10. Validate the Work
 
 Run the right level of testing and review. AI-generated work is not complete
 because it looks plausible, because execution finished, or because a single test
@@ -281,7 +337,7 @@ Do not summarize the implementation unless needed to explain a finding.
 
 ---
 
-## 10. Check It In Locally
+## 11. Check It In Locally
 
 Once reviewed and validated:
 
@@ -296,7 +352,7 @@ Do not let the AI-generated work sit as a vague pile of changes.
 
 ---
 
-## 11. Create a Thread Summary If Useful
+## 12. Create a Thread Summary If Useful
 
 At the end, ask the AI to summarize the work.
 
@@ -319,7 +375,7 @@ This becomes memory for the future.
 
 ---
 
-## 12. Repeat the Process
+## 13. Repeat the Process
 
 For the next task, start again.
 
@@ -327,6 +383,7 @@ For the next task, start again.
 Discuss
 Define
 Create handoff
+Verify handoff if needed
 Give to Codex/Claude/Agent
 Confirm understanding
 Execute

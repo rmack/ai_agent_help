@@ -53,6 +53,8 @@ Exploration:
 Execution:
 
 - use the handoff structure from `process/ai_development_workflow.md`
+- WBS handoff = numbered implementation tasking
+- verify non-trivial handoffs against as-built repo before execution
 - require expected behavior, validation expectations, correctness evidence,
   stop conditions, and definition of done
 - do not proceed when the inputs are ambiguous for the task risk
