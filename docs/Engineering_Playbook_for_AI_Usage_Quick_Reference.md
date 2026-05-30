@@ -66,6 +66,7 @@ Always request a plan before:
 - pipelines or stages
 - performance-critical code
 - architecture changes
+- security, deployment, dependency, or data-handling changes
 
 ## Risk and Gates
 
