@@ -1,36 +1,63 @@
-# Engineering Playbook for AI Usage (Lightweight)
+# Engineering Playbook for AI Usage (Quick Reference)
 
-## Core mindset
+Use this as the quick reminder. Use
+`docs/Engineering_Playbook_for_AI_Usage.md` for the full standard.
 
-- You = architect + reviewer
-- AI = fast junior engineer
+## Core Mindset
+
+- You = architect + reviewer + decision-maker
+- AI = assistant for exploration + implementation
 - Never outsource judgment
-- Clarity over speed, consistency over cleverness
+- Clarity over speed
+- Consistency and control over cleverness
 
-## Threads
-
-- One thread = one task / one commit
-- Keep threads short and focused
-- If behavior gets weird → start a new thread
-- Threads are not memory or source of truth
-
-## Source of truth
+## Source of Truth
 
 - Repo = truth
-- AGENTS.md = rules
-- Docs = knowledge
+- `AGENTS.md` / tool rules = constraints
+- Docs = durable knowledge
 - Threads = scratchpad
 
 ## Workflow
 
 - Define goal
-- Ask for plan (if non-trivial)
+- Pick the mode
+- Clarify scope + constraints
+- Ask for a plan when non-trivial
 - Execute in small steps
 - Review diffs
-- Run tests
-- Iterate
+- Run validation
+- Accept, iterate, summarize, or stop
 
-## Plan-first triggers
+## Modes
+
+- Architecture / new project
+- Enhancement
+- Bug fix
+- Technical debt / refactor
+- Architecture review
+- Code review
+- CI/CD, build, release, deployment review
+- Ideation / option comparison
+- Thread summary / handoff
+
+## Exploration vs Execution
+
+Exploration:
+
+- reason
+- compare options
+- challenge assumptions
+- do not edit files
+
+Execution:
+
+- use the handoff structure from `process/ai_development_workflow.md`
+- require expected behavior, validation expectations, correctness evidence,
+  stop conditions, and definition of done
+- do not proceed when the inputs are ambiguous for the task risk
+
+## Plan-First Triggers
 
 Always request a plan before:
 
@@ -38,118 +65,163 @@ Always request a plan before:
 - cross-module logic
 - pipelines or stages
 - performance-critical code
-- architectural changes
+- architecture changes
 
-## Task scoping
+## Risk and Gates
 
-- Keep changes small and bounded
-- Avoid “do everything” prompts
+Match gate depth to risk:
 
-Break work into:
+- Trivial = scope + diff + validation review
+- Normal = standard gates
+- High-risk = stronger gates
+- Regulated / sensitive = strongest gates
 
-- ideation
-- implementation
-- cleanup
-- testing
+Remember the gates:
+
+- problem understanding
+- architecture approval
+- pattern approval
+- scope approval
+- diff review
+- validation review
+- documentation or handoff capture
+
+## Agent Controls
+
+Before edits:
+
+- read repo instructions
+- inspect relevant code + tests
+- check worktree state when possible
+- confirm scope, validation, and stop conditions
+
+During edits:
+
+- follow existing patterns
+- keep diffs minimal
+- avoid unrelated cleanup
+- do not add dependencies or change contracts without approval
+- stop before destructive, privileged, network, production, or credential actions
+
+Closeout:
+
+- files changed
+- commands run
+- what validation proved
+- what validation did not prove
+- risks + follow-ups
 
 ## Validation
+
+Goal:
+
+- build multi-dimensional confidence
+- prove intended behavior
+- preserve required existing behavior
+- detect unintended changes
+- validate outputs, not just execution
 
 Always:
 
 - review diffs
-- run tests
+- run relevant tests/checks
+- understand what passing results actually prove
 
 Never:
 
 - trust green output blindly
+- accept generated tests without reviewing assertions
 
-Also:
+## Testing Layers
 
-- understand what tests actually prove
+Common:
 
-## Testing (two levels)
+- unit = isolated logic
+- smoke = workflow still runs
+- regression / golden = stable outputs did not drift
 
-Unit testing:
+Conditional:
 
-- validate isolated logic
-- cover edge cases
+- integration = boundaries
+- contract = schemas and interfaces
+- security = auth, input, secrets, dependencies
+- performance = hot paths and scale
+- migration / rollback = deploy and data change safety
+- manual / exploratory = UI, workflow, operator, or human-observed behavior
 
-Smoke testing:
+## Review Loop
 
-- validate system/stage behavior
-- ensure pipeline still works
+- Human reviews first
+- Use secondary agent review for non-trivial or risky AI changes
+- Ask for specific issues, not "is this good?"
+- Check correctness, behavior, architecture, tests, contracts, security,
+  performance, maintainability, and scope
+- Treat agent findings as inputs, not truth
+- Fix valid findings and review again
 
-Goal:
+## Security and Data
 
-- validate outputs, not just execution
-- move toward artifact comparison
+Do not expose:
 
-## Control and safety
+- secrets, credentials, keys, tokens, cookies
+- customer, personal, regulated, financial, health, or confidential data
+- unapproved proprietary code, logs, incidents, designs, or datasets
+- production data or production access details
 
-- Prefer minimal diffs
-- Do not allow:
-  - silent behavior changes
-  - schema drift
-  - formatting churn
-- Enforce rules via AGENTS.md
+Use sanitized, minimized, or synthetic examples.
 
-## Diff discipline
+## Stop Conditions
 
-- Changes must be:
-  - minimal
-  - isolated
-  - reviewable
+Stop when:
 
-If changes grow too large:
+- requirements are unclear
+- scope expands
+- architecture impact grows
+- new dependency appears necessary
+- security, permissions, deployment, or data risk appears
+- tests fail for unclear reasons
+- validation is ambiguous
+- existing patterns are inconsistent or poor
+- the AI is guessing
 
-- break them into smaller steps
-- or restart with tighter scope
+When stopping:
 
-## Environment checks
+- summarize what changed
+- explain what triggered the stop
+- state the decision needed
+- list available options
 
-Before real work:
+## Context
 
-- verify read access
-- verify write access
-- verify command execution
-
-If something behaves unexpectedly:
-
-- stop
-- isolate the issue
-- restart with a clean context
+- One thread = one task / feature / defect / review / handoff
+- Threads are not memory
+- Summarize long or resumed work
+- Reconfirm assumptions after interruptions
+- Restart if the thread gets weird
+- Promote durable rules into `AGENTS.md`
+- Capture decisions in docs
 
 ## Accountability
 
-- You own:
-  - correctness
-  - behavior
-  - performance
-  - downstream impact
-- “The AI generated it” is not a valid justification
+- You own correctness
+- You own behavior changes
+- You own performance impact
+- You own downstream effects
+- "The AI generated it" is not a justification
 
-## Cost awareness
+## Cost Awareness
 
 - Use AI intentionally
-- Avoid unnecessary or excessive usage
-- Prefer small, scoped prompts
-- Reuse context when possible
-- Use the appropriate tool/model for the task
+- Keep prompts scoped
+- Avoid unnecessary churn
+- Use the right tool/model for the task
 
-## Knowledge capture
-
-- Do not rely on thread history
-- Document:
-  - decisions
-  - architecture
-  - current state
-
-Keep documentation lightweight and durable.
-
-## Common mistakes to avoid
+## Common Mistakes
 
 - One large thread for everything
-- Broad “fix everything” prompts
+- Broad "fix everything" prompts
+- Exploration drifting into execution
 - Accepting changes without review
+- Trusting tests without understanding them
 - Treating local code as the standard
-- Relying on AI context instead of documentation
+- Relying on AI context instead of docs
