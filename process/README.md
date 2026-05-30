@@ -4,6 +4,8 @@ This directory contains process-level documents for using AI coding agents in a 
 
 These documents explain the operating model behind the more tactical wizard, templates, and organization-facing docs elsewhere in the repository.
 
+For most developers, the concise starting point is the [Engineering Playbook for AI Usage](../docs/Engineering_Playbook_for_AI_Usage.md). The process documents in this directory provide the deeper model behind that playbook.
+
 ## Documents
 
 | Document | Purpose |
@@ -16,5 +18,7 @@ These documents explain the operating model behind the more tactical wizard, tem
 Use `ai_development_process_overview.md` when defining or explaining the overall process.
 
 Use `ai_development_workflow.md` when you need a compact checklist for turning a discussion into an implementation handoff.
+
+Use the [Engineering Playbook for AI Usage](../docs/Engineering_Playbook_for_AI_Usage.md) when you need the shorter day-to-day operating standard for engineers.
 
 For interactive AI-agent workflow routing, use `../ai_usage_wizard/`.
