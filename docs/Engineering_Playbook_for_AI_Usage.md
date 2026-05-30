@@ -184,6 +184,17 @@ stronger evidence:
   developer experience, operator experience, or behavior that automated tests
   cannot fully evaluate.
 
+Together, these validation layers give engineers multi-dimensional confidence
+in AI-assisted changes:
+
+- Unit tests show that isolated logic behaves correctly.
+- Smoke tests show that the system or workflow still runs through its expected
+  path.
+- Regression and golden artifact tests show that stable outputs did not change
+  unintentionally.
+- Conditional validation layers add targeted evidence for boundaries,
+  contracts, security, performance, deployments, and human-observed workflows.
+
 ### General Principles
 
 - Do not create unnecessary tests.
@@ -215,6 +226,44 @@ AI-generated work should be reviewed through a deliberate loop:
   - Silent behavior changes.
   - Schema drift.
   - Unnecessary formatting changes.
+
+## Agent Operating Controls
+
+AI agents can inspect files, edit code, run commands, and generate large diffs
+quickly. Engineers must control that execution behavior, not just the final
+output.
+
+Before making changes, agents should:
+
+- Inspect repository instructions such as `AGENTS.md`, `CLAUDE.md`, or other
+  tool-specific guidance.
+- Inspect the relevant existing code and tests before proposing implementation
+  details.
+- Check the current worktree state when possible and avoid overwriting user or
+  teammate changes.
+- Identify the intended scope, allowed files or areas, validation commands, and
+  stop conditions.
+
+During execution, agents should:
+
+- Prefer existing repository patterns, helpers, APIs, and abstractions.
+- Keep diffs minimal, isolated, and reviewable.
+- Avoid unrelated formatting, cleanup, renames, or refactors.
+- Avoid adding dependencies, changing generated artifacts, modifying schemas, or
+  changing external contracts without explicit approval.
+- Stop before destructive commands, broad filesystem changes, credential access,
+  production access, network access, or permission changes unless the engineer
+  has approved that action.
+- Treat unexpected failures, ambiguous command results, or inconsistent local
+  patterns as stop conditions.
+
+At closeout, agents should report:
+
+- Files changed.
+- Commands and tests run.
+- What validation proved.
+- What validation did not prove.
+- Known risks, assumptions, or follow-up work.
 
 ## Stop Conditions
 
