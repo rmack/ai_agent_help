@@ -132,7 +132,14 @@ Developers must:
 
 ## Testing Philosophy
 
-Two levels of testing are required:
+Testing should increase confidence that AI-created, AI-updated, or AI-deleted
+logic did exactly what the engineer intended and did not introduce unintended
+behavior changes. Tests are not just a completion check; they are evidence that
+the implementation matches the requested behavior, preserves required existing
+behavior, and fails clearly when assumptions are violated.
+
+Testing should be selected based on the risk and behavior being changed. The
+common validation layers are:
 
 ### Unit Testing
 
@@ -153,6 +160,29 @@ Two levels of testing are required:
 - Compares deterministic outputs against known-good golden artifacts when stable
   outputs are part of the contract.
 - Requires reviewing artifact diffs before accepting regenerated artifacts.
+- Required when deterministic generated outputs, reports, snapshots,
+  transformed data, or pipeline artifacts are part of the expected behavior.
+
+### Conditional Validation Layers
+
+Use additional validation when the change type, risk, or blast radius requires
+stronger evidence:
+
+- Integration testing: for changes across module, service, API, storage, queue,
+  file, or external adapter boundaries.
+- Contract testing: for schemas, API responses, event payloads, configuration
+  formats, CLI output, serialized artifacts, or other stable interfaces.
+- Security testing: for authentication, authorization, input handling, secrets,
+  dependency changes, deserialization, file/path handling, network calls, or
+  user-controlled data.
+- Performance testing: for hot paths, batch jobs, large data transforms,
+  concurrency, startup time, memory pressure, or latency-sensitive behavior.
+- Migration and rollback testing: for database migrations, data transformations,
+  infrastructure changes, deployment changes, or compatibility-sensitive
+  releases.
+- Manual or exploratory testing: for UI behavior, end-to-end workflows,
+  developer experience, operator experience, or behavior that automated tests
+  cannot fully evaluate.
 
 ### General Principles
 
