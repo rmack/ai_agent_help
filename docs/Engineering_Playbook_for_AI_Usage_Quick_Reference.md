@@ -93,6 +93,7 @@ Before edits:
 
 - read repo instructions
 - inspect relevant code + tests
+- explain handoff understanding before execution
 - check worktree state when possible
 - confirm scope, validation, and stop conditions
 

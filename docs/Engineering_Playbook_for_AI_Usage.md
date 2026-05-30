@@ -277,6 +277,8 @@ Before making changes, agents should:
   tool-specific guidance.
 - Inspect the relevant existing code and tests before proposing implementation
   details.
+- When working from a handoff, explain understanding, approach, risks, and
+  questions before execution.
 - Check the current worktree state when possible and avoid overwriting user or
   teammate changes.
 - Identify the intended scope, allowed files or areas, validation commands, and
