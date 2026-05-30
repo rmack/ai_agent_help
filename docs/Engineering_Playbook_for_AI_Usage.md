@@ -265,6 +265,29 @@ At closeout, agents should report:
 - What validation did not prove.
 - Known risks, assumptions, or follow-up work.
 
+## Security and Data Handling
+
+AI tools must not be given sensitive information unless the organization has
+explicitly approved the tool, data type, and use case.
+
+Do not paste, upload, or expose:
+
+- Secrets, credentials, private keys, access tokens, session cookies, or API
+  keys.
+- Customer data, personal data, regulated data, financial data, health data, or
+  confidential business data.
+- Proprietary source code, design documents, incident details, logs, or datasets
+  unless the AI tool is approved for that data classification.
+- Production data or production access details unless explicitly approved.
+
+Use sanitized, minimized, or synthetic examples when AI assistance is needed for
+sensitive workflows. Remove identifiers, secrets, tokens, and unnecessary
+business context before sharing data with an AI tool.
+
+Security, privacy, compliance, credential, or production-access concerns are
+stop conditions. When they appear, pause the AI workflow and get the required
+human, security, legal, or compliance review before continuing.
+
 ## Stop Conditions
 
 AI-assisted work must stop and return to engineer decision-making when:
