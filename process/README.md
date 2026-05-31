@@ -10,10 +10,13 @@ For most developers, the concise starting point is the [Engineering Playbook for
 
 | Document | Purpose |
 | --- | --- |
+| `ai_divergence_control.md` | Overview of AI divergence as the failure mode controlled through human ownership, patterns, verification, review, tests, documentation, and stop conditions. |
 | `ai_development_process_overview.md` | Detailed operating model for AI-assisted development, including architecture-first planning, workflow modes, validation gates, stop conditions, and durable memory. |
 | `ai_development_workflow.md` | Shorter practical workflow for moving from discussion to scoped implementation, review, validation, and commit. |
 
 ## How To Use
+
+Use `ai_divergence_control.md` after the playbook to understand why the process treats AI output as provisional and how the workflow controls divergence.
 
 Use `ai_development_process_overview.md` when defining or explaining the overall process.
 

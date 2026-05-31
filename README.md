@@ -27,22 +27,25 @@ Use it to:
 
 ## Start Here: Developer Reading Order
 
-Developers should start with these three documents:
+Developers should start with these four documents:
 
 1. [Engineering Playbook for AI Usage](docs/Engineering_Playbook_for_AI_Usage.md)
 
    A concise day-to-day operating standard for using AI during software development.
 
-2. [AI-Assisted Development Process Overview](process/ai_development_process_overview.md)
+2. [AI Divergence Control Overview](process/ai_divergence_control.md)
+
+   A short overview of why AI output is treated as provisional until verified, and how patterns, review, tests, documentation, and stop conditions make divergence visible and correctable.
+
+3. [AI-Assisted Development Process Overview](process/ai_development_process_overview.md)
 
    The full process model behind the playbook, including workflow modes, architecture-first planning, gates, validation, stop conditions, and durable memory.
 
-3. [AI Development Workflow](process/ai_development_workflow.md)
+4. [AI Development Workflow](process/ai_development_workflow.md)
 
    A practical workflow for moving from discussion to scoped implementation, review, validation, and handoff.
 
-  
-   After those, use [`ai_usage_wizard/`](ai_usage_wizard/) when you want an AI agent to guide the process interactively.
+After those, use [`ai_usage_wizard/`](ai_usage_wizard/) when you want an AI agent to guide the process interactively.
 
 
 ## Operating Model
@@ -56,6 +59,7 @@ The process layer defines how developers should use AI during software work. It 
 Primary locations:
 
 - [`process/`](process/)
+- [`process/ai_divergence_control.md`](process/ai_divergence_control.md)
 - [`process/ai_development_process_overview.md`](process/ai_development_process_overview.md)
 - [`process/ai_development_workflow.md`](process/ai_development_workflow.md)
 - [`templates/`](templates/)
@@ -109,6 +113,18 @@ Primary locations:
 This directory contains the process-level material for AI-assisted development.
 
 Start with [process/README.md](process/README.md) for the current process document inventory.
+
+### `process/ai_divergence_control.md`
+
+A short overview of AI divergence as the failure mode the workflow controls.
+
+It emphasizes:
+
+- treating AI-generated work as provisional until verified
+- using repeatable patterns as an execution and review surface
+- grounding claims in repository evidence, runtime output, docs, or authoritative references
+- using tests, deterministic outputs, and golden artifacts as confidence evidence
+- stopping when critical assumptions cannot be verified
 
 ### `process/ai_development_process_overview.md`
 
