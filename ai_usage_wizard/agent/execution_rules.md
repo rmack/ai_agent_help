@@ -23,6 +23,14 @@ Confirm:
 - validation expectations
 - stop conditions
 
+When a WBS Work Package is used, also confirm:
+
+- repository and supporting-document claims were verified
+- prerequisites and blockers are current
+- execution approval is not Pending
+- the agent explained its understanding, approach, risks, validation plan, and stop
+  conditions before editing
+
 ## During Implementation
 
 - Prefer minimal diffs.
@@ -52,3 +60,7 @@ Use `definition_of_done.md` and summarize:
 - risks
 - follow-up tasks
 - documentation updates
+
+When executing a WBS Work Package, update its task checkboxes and Closeout Record with
+the same evidence. Do not silently change package scope; stop for revision and renewed
+approval when material scope or architecture changes.

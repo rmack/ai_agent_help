@@ -23,6 +23,8 @@ Use it to:
 - define validation expectations before making changes
 - explain policy, guidance, and engineering expectations for AI usage
 - capture durable context outside temporary chat threads
+- create repository-based WBS Streams and bounded Work Packages for durable execution
+  and closeout
 - provide reusable `AGENTS.md` and `CLAUDE.md` templates for other repositories
 
 ## Start Here: Developer Reading Order
@@ -88,6 +90,7 @@ Primary locations:
 - [`ai_usage_wizard/agent/`](ai_usage_wizard/agent/)
 - [`ai_usage_wizard/workflows/`](ai_usage_wizard/workflows/)
 - [`ai_usage_wizard/templates/`](ai_usage_wizard/templates/)
+- [`ai_usage_wizard/templates/wbs/`](ai_usage_wizard/templates/wbs/)
 
 ## Main Contents
 
@@ -181,6 +184,8 @@ Key files:
 - `ai_usage_wizard/agent/` - agent behavior and execution rules
 - `ai_usage_wizard/workflows/` - task-specific workflow instructions
 - `ai_usage_wizard/templates/` - reusable Markdown output templates
+- `ai_usage_wizard/templates/wbs/` - WBS usage guide and reusable Overview, Stream,
+  and Work Package templates
 
 ## Available Workflows
 

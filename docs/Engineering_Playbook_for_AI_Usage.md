@@ -84,11 +84,19 @@ Stop conditions:
 Definition of done:
 ```
 
-A handoff may also be structured as a WBS / work breakdown structure when a
-larger goal needs numbered implementation tasking, dependency sequencing, or
-future work slices. For non-trivial WBS handoffs, use a separate review thread
-when useful to verify the handoff against the current repository and as-built
-implementation before giving it to the implementation agent.
+A handoff may also use the reusable WBS model in
+`ai_usage_wizard/templates/wbs/`: an optional repository-wide Overview, a Stream for a
+larger objective containing multiple related Work Packages, and a bounded Work Package
+containing 1..n tasks. A small change normally needs only one Work Package. Supporting
+CONOPS, architecture, decisions, findings, and open-item documents provide context but
+do not expand package scope.
+
+Create WBS artifacts only after the selected workflow has produced enough approved
+planning detail. Record process weight, dependencies, execution approval, acceptance,
+validation, stop conditions, and closeout evidence. Pending execution approval is not
+authorization to edit. For non-trivial WBS handoffs, use a separate review thread when
+useful to verify the handoff against the current repository and as-built implementation
+before giving it to the implementation agent.
 
 Expected behavior, validation expectations, correctness evidence required, stop
 conditions, and definition of done should describe the intended behavior,

@@ -1188,6 +1188,22 @@ Check:
 If the environment is not ready, stop and explain what is blocking execution.
 ```
 
+### Optional Durable WBS Work Artifact
+
+When approved planning must be preserved for execution across agents, people, threads,
+or an external tasking system, use the templates in
+`ai_usage_wizard/templates/wbs/`:
+
+- a WBS Work Package for one bounded outcome containing 1..n tasks
+- a WBS Stream only when multiple related packages form a larger objective
+- the provisional WBS Overview when a repository needs portfolio inventory and
+  external-task traceability
+
+Supporting CONOPS, architecture, decision, findings, and open-item documents provide
+context; they do not expand Work Package scope. Verify the package against the current
+repository and require explicit human execution approval before editing. Update its
+Closeout Record when the work is reviewed and validated.
+
 ---
 
 ## 7.2 Thread Execution Loop

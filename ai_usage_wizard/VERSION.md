@@ -16,6 +16,8 @@ Version 2 adds:
   - Architecture Decision Summary
 - phased workflows for enhancement, bug fix, and technical debt
 - stronger pause/continue checkpoints between phases
+- portable WBS Overview, Stream, and bounded Work Package templates with execution
+  approval and closeout guidance
 
 ## Design Goal
 

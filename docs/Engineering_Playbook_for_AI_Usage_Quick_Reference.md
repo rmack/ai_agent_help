@@ -53,7 +53,10 @@ Exploration:
 Execution:
 
 - use the handoff structure from `process/ai_development_workflow.md`
-- WBS handoff = numbered implementation tasking
+- WBS Work Package = one bounded outcome with 1..n tasks
+- WBS Stream = multiple related Work Packages for a larger objective
+- supporting docs provide context; they do not expand Work Package scope
+- pending WBS execution approval means do not implement
 - verify non-trivial handoffs against as-built repo before execution
 - require expected behavior, validation expectations, correctness evidence,
   stop conditions, and definition of done

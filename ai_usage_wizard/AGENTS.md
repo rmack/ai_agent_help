@@ -16,6 +16,8 @@ You must:
 6. Follow `ai_usage_wizard/agent/phase_control.md` for multi-phase workflows.
 7. Use `ai_usage_wizard/definition_of_done.md` before closing implementation work.
 8. Use `ai_usage_wizard/templates/thread_summary.md` when summarizing durable context.
+9. Read `ai_usage_wizard/templates/wbs/README.md` when creating, reviewing, or
+   executing a WBS artifact.
 
 ## Do Not Begin Implementation Until
 
@@ -24,6 +26,7 @@ You must:
 - scope is clear enough for the selected workflow
 - validation expectations are identified
 - stop conditions are known
+- when a WBS governs execution, its Work Package is verified and explicitly approved
 
 ## Interaction Style
 
@@ -59,3 +62,15 @@ Stop and ask for direction if:
 ## Durable Memory
 
 If the discussion contains reusable decisions, architecture notes, patterns, or tangents, recommend creating a Markdown thread summary.
+
+## WBS Artifacts
+
+- Use a WBS Work Package for one bounded, reviewable outcome containing 1..n tasks.
+- Use a WBS Stream only when multiple related Work Packages form a larger objective.
+- Treat CONOPS, architecture, findings, and decision records as supporting documents;
+  references to them do not expand Work Package scope.
+- Verify a Work Package against the current repository before execution.
+- Do not implement while `Execution approval` is `Pending`.
+- Require the implementation agent to explain its understanding before editing.
+- Record actual changes, validation evidence, review, limitations, and follow-up work
+  in the Work Package Closeout Record.

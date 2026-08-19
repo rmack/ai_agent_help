@@ -21,6 +21,12 @@ Use `templates/architecture_decision.md` and include:
 - consequences
 - follow-up tasks
 
+When the accepted architecture produces multiple related outcomes, offer to create a
+WBS Stream using `../../templates/wbs/wbs_stream_template_v1.md` and bounded design,
+investigation, implementation, validation, or documentation Work Packages using
+`../../templates/wbs/wbs_template_v1.md`. Architecture documents remain supporting
+context; Work Packages define executable boundaries.
+
 ## Stop / Continue
 
 After producing the decision summary, ask:
@@ -29,6 +35,7 @@ After producing the decision summary, ask:
 Do you want to:
 1. Revise this architecture decision summary
 2. Create an implementation plan
-3. Create a Markdown memory file
-4. Stop here
+3. Create a WBS Stream and/or bounded Work Package
+4. Create a Markdown memory file
+5. Stop here
 ```

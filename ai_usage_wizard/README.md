@@ -53,6 +53,19 @@ When the user says `read ai_usage_wizard`, `use ai_usage_wizard`, `start ai_usag
 - `agent/wizard_behavior.md` - how to behave like a text-based wizard.
 - `workflows/` - workflow-specific execution instructions.
 - `templates/` - reusable output templates.
+- `templates/wbs/` - WBS Overview, Stream, and bounded Work Package templates plus
+  human/agent usage guidance.
+
+## WBS Work Artifacts
+
+Use the WBS templates when approved planning needs to become durable repository-based
+work that a human or AI agent can execute and close. A Work Package defines one bounded
+outcome; a Stream coordinates multiple packages; the provisional Overview template
+supports repository-wide inventory and external-task traceability.
+
+Start with `templates/wbs/README.md`. WBS artifacts support the selected workflow and
+do not replace its discovery phases, human gates, review, validation, or Definition of
+Done.
 
 ## User Reminder
 

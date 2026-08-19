@@ -117,19 +117,29 @@ Stop conditions
 Definition of done
 ```
 
-For implementation planning, this handoff may be a WBS / work breakdown
-structure document. In that form, it should break a larger goal into scoped
-implementation tasking such as:
+For durable or non-trivial planning, this handoff may use the WBS templates in
+`ai_usage_wizard/templates/wbs/`:
 
 ```text
-WBS 3
-WBS 3.1
-WBS 3.2
-WBS 3.3
+WBS Overview
+  repository-wide inventory and external-task traceability
+
+WBS Stream
+  a larger objective coordinated through multiple related Work Packages
+
+WBS Work Package
+  one bounded, reviewable outcome containing 1..n tasks
 ```
 
-The WBS should make task order, dependencies, current scope, future scope,
-validation expectations, stop conditions, and definition of done explicit.
+A small change usually needs only one Work Package. Use a Stream only when multiple
+packages combine into a larger objective. CONOPS, architecture, decision records,
+findings, and open-item registers remain supporting documents; referencing them does
+not expand package scope.
+
+Create a Work Package only after the selected workflow has established enough approved
+scope, constraints, acceptance criteria, validation expectations, and stop conditions.
+Record process weight, dependencies, execution approval, checkable tasks, and closeout
+evidence. `Execution approval: Pending` is not authorization to implement.
 
 Simple wording:
 
@@ -175,8 +185,10 @@ Check whether the handoff accurately reflects:
 Report corrections needed before this handoff is used for implementation.
 ```
 
-Discuss the findings, update the WBS / handoff if needed, and only then use it
-as official implementation input.
+Discuss the findings, update the WBS / handoff if needed, obtain explicit human
+execution approval, and only then use it as official implementation input. Material
+scope or architecture changes discovered during execution require revision and renewed
+approval rather than a silent WBS update.
 
 ---
 

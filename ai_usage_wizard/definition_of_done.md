@@ -54,4 +54,6 @@ A task is done only when the developer can understand, review, validate, and pre
 
 - Known limitations are documented.
 - Follow-up tasks are captured.
+- When a WBS Work Package governed execution, its task state and Closeout Record match
+  the actual work, validation, review, risks, and documentation changes.
 - The work is ready for commit, PR, handoff, or continued discussion.
